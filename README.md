@@ -1,8 +1,19 @@
 # Agent Sentinel Lab
 
+![Agent Sentinel Lab cover](assets/agent-sentinel-cover.png)
+
 Agent Sentinel Lab is a compact Python CLI for scoring AI agent task text against prompt-injection, credential-exfiltration, and tool-risk heuristics.
 
 It is intentionally local-first: no network calls, no model API keys, and no hidden telemetry.
+
+## What It Detects
+
+- Prompt-injection language that tries to override earlier instructions.
+- Requests to reveal or transmit tokens, passwords, API keys, or local credential files.
+- External upload/post instructions that indicate possible exfiltration.
+- Risky shell/tool instructions such as broad permission changes.
+
+The repository also includes synthetic scenario cards under `scenarios/` for quick eval experiments.
 
 ## Quick Start
 
