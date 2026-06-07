@@ -1,0 +1,23 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "agent-sentinel-lab"
+version = "0.1.0"
+description = "A small CLI lab for scoring AI agent tasks against prompt-injection and tool-risk heuristics."
+readme = "README.md"
+requires-python = ">=3.11"
+authors = [{ name = "Codex Agent" }]
+license = { text = "MIT" }
+dependencies = []
+
+[project.scripts]
+agent-sentinel = "agent_sentinel_lab.cli:main"
+
+[tool.pytest.ini_options]
+pythonpath = ["src"]
+testpaths = ["tests"]
+
+[tool.setuptools.packages.find]
+where = ["src"]
