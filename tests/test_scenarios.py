@@ -102,7 +102,9 @@ Summarize README.md.
 def test_repository_scenario_cards_match_current_rules() -> None:
     scenario_dir = Path(__file__).resolve().parents[1] / "scenarios"
 
-    result = evaluate_scenarios(load_scenarios(scenario_dir))
+    scenarios = load_scenarios(scenario_dir)
+    result = evaluate_scenarios(scenarios)
 
-    assert result.total == 90
+    assert result.total == 340
+    assert len({scenario.identifier for scenario in scenarios}) == 340
     assert result.failures == []
