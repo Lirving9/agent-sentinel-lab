@@ -1,5 +1,7 @@
 from __future__ import annotations
 
+from pathlib import Path
+
 from agent_sentinel_lab.scenarios import evaluate_scenarios, load_scenarios, parse_scenario_card
 
 
@@ -95,3 +97,12 @@ Summarize README.md.
     assert result.failures[0]["identifier"] == "002"
     assert result.failures[0]["expected_category"] == "secret_exfiltration"
     assert result.failures[0]["actual_level"] == "low"
+
+
+def test_repository_scenario_cards_match_current_rules() -> None:
+    scenario_dir = Path(__file__).resolve().parents[1] / "scenarios"
+
+    result = evaluate_scenarios(load_scenarios(scenario_dir))
+
+    assert result.total == 90
+    assert result.failures == []
