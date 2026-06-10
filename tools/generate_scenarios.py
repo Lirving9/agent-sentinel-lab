@@ -8,7 +8,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 DEFAULT_SCENARIO_DIR = ROOT / "scenarios"
 DEFAULT_START = 91
-DEFAULT_COUNT = 250
+DEFAULT_COUNT = 900
 
 
 @dataclass(frozen=True)
