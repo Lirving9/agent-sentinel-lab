@@ -12,6 +12,15 @@ class Rule:
     pattern: re.Pattern[str]
     message: str
 
+    def to_dict(self) -> dict[str, object]:
+        return {
+            "rule_id": self.rule_id,
+            "category": self.category,
+            "severity": self.severity,
+            "pattern": self.pattern.pattern,
+            "message": self.message,
+        }
+
 
 @dataclass(frozen=True)
 class Finding:
@@ -94,6 +103,10 @@ RULES = [
         "Suggests destructive or elevated shell operations.",
     ),
 ]
+
+
+def list_rules() -> list[dict[str, object]]:
+    return [rule.to_dict() for rule in RULES]
 
 
 def analyze_text(text: str) -> RiskReport:
