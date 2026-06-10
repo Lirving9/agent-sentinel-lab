@@ -78,14 +78,22 @@ RULES = [
         "secret.token_file",
         "secret_exfiltration",
         60,
-        re.compile(r"(\.config/gh/hosts\.yml|\.git-credentials|GITHUB_TOKEN|API[_-]?KEY|env secrets?)", re.I),
+        re.compile(
+            r"(\.config/gh/hosts\.yml|\.git-credentials|GITHUB_TOKEN|API[\s_-]?KEY|"
+            r"(env|environment)\s+secrets?)",
+            re.I,
+        ),
         "Targets credentials, tokens, or local secret storage.",
     ),
     Rule(
         "secret.disclose",
         "secret_exfiltration",
         40,
-        re.compile(r"\b(reveal|print|dump|disclose|send)\b.*\b(token|secret|password|credential)s?\b", re.I),
+        re.compile(
+            r"\b(reveal|print|dump|disclose|send)\b.*"
+            r"\b(token|secret|password|credential|API[\s_-]?KEY)s?\b",
+            re.I,
+        ),
         "Requests disclosure of credentials or secrets.",
     ),
     Rule(
